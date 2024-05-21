@@ -1,0 +1,9 @@
+[manager]
+192.168.3.9
+[slaves]
+192.168.3.10
+192.168.3.11
+
+[todos:children]
+manager
+slaves

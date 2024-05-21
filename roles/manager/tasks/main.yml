@@ -1,0 +1,86 @@
+---
+# tasks file for manager
+- name: Instalar pre-requisito HAproxy
+  command: yum install gcc pcre-devel openssl-devel tar make -y
+
+- name: copiar Instalador HAproxy
+  copy:
+    src: files/haproxy-2.5.5.tar.gz
+    dest: /tmp
+    owner: root
+    group: root
+    mode: 0775
+
+- name: extrair haproxy
+  command: tar xzvf /tmp/haproxy-2.5.5.tar.gz -C /tmp
+
+- name: Compilar HAProxy
+  make:
+    chdir: /tmp/haproxy-2.5.5
+    target: all
+    params:
+      - TARGET=linux-glibc
+      - USE_PCRE=1
+      - USE_OPENSSL=1
+      - USE_ZLIB=1
+      - USE_CRYPT_H=1
+      - USE_LIBCRYPT=1
+
+- name: Instalar HAproxy
+  command: make install
+  args:
+    chdir: /tmp/haproxy-2.5.5
+  become: yes
+
+- name: Criar diretório /etc/haproxy
+  file:
+    path: /etc/haproxy
+    state: directory
+    mode: '0755'
+
+- name: Criar diretório /var/lib/haproxy
+  file:
+    path: /var/lib/haproxy
+    state: directory
+    mode: '0755'
+
+- name: Criar arquivo /var/lib/haproxy/stats
+  file:
+    path: /var/lib/haproxy/stats
+    state: touch
+    mode: '0644'
+
+- name: Criar link simbólico para haproxy
+  file:
+    src: /usr/local/sbin/haproxy
+    dest: /usr/sbin/haproxy
+    state: link
+
+- name: Copiar o arquivo haproxy.init para /etc/init.d/haproxy
+  copy:
+    src: /tmp/haproxy-2.5.5/examples/haproxy.init
+    dest: /etc/init.d/haproxy
+    mode: '0755'
+
+- name: Ajustar permissões do arquivo /etc/init.d/haproxy
+  file:
+    path: /etc/init.d/haproxy
+    mode: '0755'
+
+- name: Recarregar o daemon do systemd
+  command: systemctl daemon-reload
+
+- name: Habilitar HAproxy na inicialização
+  command: systemctl enable haproxy
+
+- name: Criar usuário haproxy
+  user:
+    name: haproxy
+    system: yes
+
+- name: Configurar arquivo haproxy.cfg
+  template:
+    src: templates/haproxy.cfg
+    dest: /etc/haproxy/haproxy.cfg
+  notify:
+    - RestartHAproxy

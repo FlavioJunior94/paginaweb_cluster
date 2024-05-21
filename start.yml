@@ -1,0 +1,18 @@
+---
+#- name: Instalações Basicas
+#  hosts: todos
+
+#  user: root
+#  become: yes
+
+#  roles:
+#    - basicos
+
+- name: Configurando Manager
+  hosts: manager
+
+  user: root
+  become: yes
+
+  roles:
+    - manager

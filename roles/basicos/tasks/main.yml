@@ -1,0 +1,45 @@
+---
+# tasks file for basicos
+- name: Atualizar sistema
+  ignore_errors: yes
+  shell: yum update -y
+
+- name: upgrade pacotes
+  ignore_errors: yes
+  yum:
+    name: "*"
+    state: latest
+
+- name: instalar epel-release
+  ignore_errors: yes
+  command: yum install -y epel-release -y
+
+- name: "configuracao ntp Sao Paulo"
+  shell: "timedatectl set-timezone America/Sao_Paulo"
+
+- name: instalar servicos
+  ignore_errors: yes
+  yum:
+    name: "{{servicos}}"
+    state: present
+
+- name: criar usuario administrador
+  user:
+    name: "{{ item }}"
+    password: "{{ senha | password_hash('sha512') }}"
+    state: present
+  with_items: "{{ usuario }}"
+
+- name : configurando o usuario administrador
+  command: gpasswd -a administrador wheel
+
+
+- name: parar Firewall
+  command: systemctl stop firewalld
+
+- name: desabilitar Firewall
+  command: systemctl disable firewalld
+
+- name: Desabilitar SELinux
+  selinux:
+    state: disabled

@@ -1,0 +1,22 @@
+---
+# vars file for basicos
+servicos:
+  - yum-utils
+  - ntp
+  - vi
+  - wget
+  - python3
+  - ncdu
+  - telnet
+  - vim
+  - nano
+  - net-tools
+  - python3
+  - htop
+  - zip
+  - curl
+
+usuario:
+- administrador
+
+senha: "Mudar123"

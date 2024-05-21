@@ -1,0 +1,5 @@
+---
+# vars file for manager
+
+haproxy_stats_user: "haproxy"
+haproxy_stats_password: "haproxy@442"
