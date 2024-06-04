@@ -1,0 +1,8 @@
+---
+- name: UPDATE PAGINA WEB
+  hosts: todos
+  user: root
+  become: yes
+
+  roles:
+    - update
