@@ -1,12 +1,12 @@
 ---
-#- name: Instalações Basicas
-#  hosts: todos
+- name: Instalações Basicas
+  hosts: todos
 
-#  user: root
-#  become: yes
+  user: root
+  become: yes
 
-#  roles:
-#    - basicos
+  roles:
+    - basicos
 
 - name: Configurando Manager
   hosts: manager

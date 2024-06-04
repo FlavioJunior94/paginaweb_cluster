@@ -1,5 +1,5 @@
 ---
 # handlers file for manager
 
-- name: RestartHAproxy
-  command: yum restart haproxy
+- name: StartHAproxy
+  command: systemctl start haproxy

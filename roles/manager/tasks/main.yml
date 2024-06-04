@@ -77,4 +77,4 @@
     src: templates/haproxy.cfg
     dest: /etc/haproxy/haproxy.cfg
   notify:
-    - RestartHAproxy
+    - StartHAproxy
