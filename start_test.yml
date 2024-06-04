@@ -1,0 +1,9 @@
+---
+- name: Configurando Site
+  hosts: manager
+
+  user: root
+  become: yes
+
+  roles:
+    - nginx

@@ -14,6 +14,7 @@ servicos:
   - python3
   - htop
   - zip
+  - unzip
   - curl
 
 usuario:

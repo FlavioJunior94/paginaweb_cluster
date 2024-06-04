@@ -1,2 +1,31 @@
 ---
 # tasks file for nginx
+
+- name: Instalar Nginx
+  yum:
+    name: nginx
+    state: present
+
+- name: Configurar arquivo Nginx
+  template:
+    src: templates/site.conf
+    dest: /etc/nginx/conf.d/site.conf
+  notify:
+  - StartNginx
+
+- name: copiar arquivo do site
+  copy:
+    src: files/{{name_zip}}
+    dest: /tmp
+    owner: root
+    group: root
+    mode: '0755'
+
+- name: criar diretorio html
+  file:
+    path: /var/www/html/
+    state: directory
+    mode: '0755'
+  notify:
+  - DesziparSite
+

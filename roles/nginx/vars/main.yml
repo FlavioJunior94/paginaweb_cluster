@@ -1,2 +1,8 @@
 ---
 # vars file for nginx
+
+server_name: "meusite.com.br"
+index: "home.html"
+
+#nome do zip dos arquivos do site:
+name_zip: "site.zip"

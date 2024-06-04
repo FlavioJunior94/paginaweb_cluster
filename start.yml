@@ -16,3 +16,12 @@
 
   roles:
     - manager
+
+- name: Configurando Site
+  hosts: todos
+
+  user: root
+  become: yes
+
+  roles:
+    - nginx

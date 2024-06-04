@@ -1,2 +1,11 @@
 ---
 # handlers file for nginx
+- name: StartNginx
+  command: systemctl start nginx
+
+- name: DesziparSite
+  unarchive:
+    src: /tmp/{{ name_zip }}
+    dest: /var/www/html/
+    mode: '0755'
+    remote_src: yes
