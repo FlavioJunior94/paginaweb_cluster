@@ -20,3 +20,9 @@ Este projeto tem como objetivo configurar e implementar uma página web em três
 **Servidores Web:** Será utilizado nesse projeto, Nginx.
 
 **Virtualização:** Sera utilizado o Vagrant para para provisionamento de VM's juntamente com VirtualBox.
+
+
+## M0do de usar
+
+**Implementação:** ansible-playbook -i hosts start.yml
+**Upgrade:** ansible-playbook -i hosts upgrade.yml

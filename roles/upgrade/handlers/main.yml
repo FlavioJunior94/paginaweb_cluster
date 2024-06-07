@@ -1,0 +1,7 @@
+---
+# handlers file for upgrade
+- name: verify_nginx_stopped
+  shell: systemctl is-active nginx
+  register: nginx_verify_status
+  failed_when: nginx_verify_status.stdout == "active"
+  ignore_errors: yes
