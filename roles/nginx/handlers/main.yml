@@ -9,3 +9,6 @@
     dest: /var/www/html/
     mode: '0755'
     remote_src: yes
+
+- name: - EnableNginx
+  command: systemctl enable nginx

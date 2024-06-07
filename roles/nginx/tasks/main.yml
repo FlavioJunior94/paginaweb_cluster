@@ -12,6 +12,7 @@
     dest: /etc/nginx/conf.d/site.conf
   notify:
   - StartNginx
+  - EnableNginx
 
 - name: copiar arquivo do site
   copy:
