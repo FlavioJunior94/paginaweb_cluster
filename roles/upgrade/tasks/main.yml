@@ -12,3 +12,29 @@
     state: stopped
   when: nginx_status.stdout == "active"
   notify: verify_nginx_stopped
+
+- name: RemoverArquivos
+  file:
+    path: "/var/www/html/*"
+    state: absent
+
+- name: UpNovosArquivos
+  copy:
+    src: files/{{name_zip}}
+    dest: /tmp
+    owner: root
+    group: root
+    mode: '0755'
+
+- name: DesziparUpgrade
+  unarchive:
+    src: /tmp/{{ name_zip }}
+    dest: /var/www/html/
+    mode: '0755'
+    remote_src: yes
+
+- name: IniciaNginx
+  service:
+    name: nginx
+    state: started
+    enabled: yes

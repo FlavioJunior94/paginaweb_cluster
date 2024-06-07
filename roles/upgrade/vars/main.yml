@@ -1,2 +1,5 @@
 ---
 # vars file for upgrade
+
+#nome do zip dos arquivos do site:
+name_zip: "site.zip"
