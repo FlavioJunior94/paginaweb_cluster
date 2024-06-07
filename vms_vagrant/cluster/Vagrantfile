@@ -1,0 +1,34 @@
+Vagrant.configure("2") do |config|
+    config.vm.define "manager" do |manager|
+        manager.vm.box = "centos/7"
+        manager.vm.hostname="manager"
+        manager.vm.provision "shell", path: "provision.sh"
+        manager.vm.network "private_network", ip: "192.168.3.9"
+        manager.vm.network "forwarded_port", guest: 80, host: 80
+        manager.vm.network "forwarded_port", guest: 9000, host: 9000
+        manager.vm.provider 'virtualbox' do |v|
+            v.memory =2800
+            v.cpus = 1
+        end
+    end
+    config.vm.define "slave1" do |slave1|
+        slave1.vm.box = "centos/7"
+        slave1.vm.hostname="slave1"
+        slave1.vm.provision "shell", path: "provision.sh"
+        slave1.vm.network "private_network", ip: "192.168.3.10"
+        slave1.vm.provider 'virtualbox' do |v|
+            v.memory =1420
+            v.cpus = 1
+        end
+    end
+    config.vm.define "slave2" do |slave2|
+        slave2.vm.box = "centos/7"
+        slave2.vm.hostname="slave2"
+        slave2.vm.provision "shell", path: "provision.sh"
+        slave2.vm.network "private_network", ip: "192.168.3.11"
+        slave2.vm.provider 'virtualbox' do |v|
+            v.memory =1420
+            v.cpus = 1
+        end
+    end
+end
