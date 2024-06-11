@@ -47,9 +47,9 @@ Este projeto tem como objetivo configurar e implementar uma página web em três
 
 ***server_name*** url do site.
 
-***index**** nome da pagina index.
+***index*** nome da pagina index.
 
-*** name_zip *** nome do arquivo zipado que contem os arquivos necessarios da pagina web.
+***name_zip*** nome do arquivo zipado que contem os arquivos necessarios da pagina web.
 
 **/root/paginaweb_cluster/roles/upgarde/vars/main.yml**
 
