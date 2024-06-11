@@ -1,7 +1,7 @@
 # Pagina Web Cluster
 
 ## Visão Geral
-Este projeto tem como objetivo configurar e implementar uma página web em três servidores utilizando Ansible, garantindo alta disponibilidade e balanceamento de carga através da tecnologia HAProxy. A infraestrutura resultante proporcionará uma experiência robusta e escalável, assegurando que a página web permaneça acessível e responsiva mesmo em caso de falhas de servidor.
+Este projeto tem como objetivo configurar e implementar uma página web em diversos servidores utilizando Ansible, garantindo alta disponibilidade e balanceamento de carga através da tecnologia HAProxy. A infraestrutura resultante proporcionará uma experiência robusta e escalável, assegurando que a página web permaneça acessível e responsiva mesmo em caso de falhas de servidor.
 
 
 ## Objetivos
