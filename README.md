@@ -35,9 +35,9 @@ Este projeto tem como objetivo configurar e implementar uma página web em três
 
 ***servicos*** serviços basicos a serem instalados.
 
-*** usuario *** Usuarios a serem criados nos servidores.
+***usuario*** Usuarios a serem criados nos servidores.
 
-*** senha *** senha padrao para os usuarios.
+***senha*** senha padrao para os usuarios.
 
 **/root/paginaweb_cluster/roles/manager/vars/main.yml**
 
@@ -45,12 +45,12 @@ Este projeto tem como objetivo configurar e implementar uma página web em três
 
 **/root/paginaweb_cluster/roles/nginx/vars/main.yml**
 
-*** server_name *** url do site.
+***server_name*** url do site.
 
-*** index **** nome da pagina index.
+***index**** nome da pagina index.
 
 *** name_zip *** nome do arquivo zipado que contem os arquivos necessarios da pagina web.
 
 **/root/paginaweb_cluster/roles/upgarde/vars/main.yml**
 
-*** name_zip *** nome do arquivo zipado que contem os arquivos atualizados da pagina web para upgrade da mesma.
+***name_zip*** nome do arquivo zipado que contem os arquivos atualizados da pagina web para upgrade da mesma.
